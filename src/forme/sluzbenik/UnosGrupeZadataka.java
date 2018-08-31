@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import komunikacija.KomunikacijaSaServerom;
 import konstante.Operacije;
-import logika.Kontroler;
+
 import modeli.ModelTabeleResenjaZadataka;
 import transfer.KlijentskiZahtev;
 import transfer.ServerskiOdgovor;

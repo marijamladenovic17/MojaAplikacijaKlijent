@@ -9,7 +9,7 @@ import domen.Clan;
 import java.util.ArrayList;
 import komunikacija.KomunikacijaSaServerom;
 import konstante.Operacije;
-import logika.Kontroler;
+
 import transfer.KlijentskiZahtev;
 import transfer.ServerskiOdgovor;
 

@@ -10,7 +10,7 @@ import domen.Zadatak;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import logika.Kontroler;
+
 import modeli.ModelTabelePretragaKartona;
 
 /**
@@ -209,23 +209,23 @@ public class FormaPretragaKartona extends javax.swing.JFrame {
 
     private void btnNadjiKartonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNadjiKartonActionPerformed
         // TODO add your handling code here:
-        String kb =txtKartonskiBroj.getText();
-        int kartonskiBroj = Integer.parseInt(kb);
-        
-        Karton karton = Kontroler.getInstance().vratiKarton(kartonskiBroj);
-        
-        if(karton!=null){
-            panelZaNestajanje.setVisible(true);
-            lblGrupaZadataka.setText(karton.getGrupaZadataka().getBrGrupe()+"");
-            lblTest.setText(karton.getGrupaZadataka().getTest().getNazivTesta());
-            ArrayList<Zadatak> zadaciKartona = karton.getListaOdg();
-            ModelTabelePretragaKartona mtr = new ModelTabelePretragaKartona();
-            mtr.setZadaci(zadaciKartona);
-            tabelaZadataka.setModel(mtr);
-        }else{
-            JOptionPane.showMessageDialog(this, "Karton sa takvim kratonskim brojem ne postoji u bazi!");
-            return;
-        }
+//        String kb =txtKartonskiBroj.getText();
+//        int kartonskiBroj = Integer.parseInt(kb);
+//        
+//        Karton karton = Kontroler.getInstance().vratiKarton(kartonskiBroj);
+//        
+//        if(karton!=null){
+//            panelZaNestajanje.setVisible(true);
+//            lblGrupaZadataka.setText(karton.getGrupaZadataka().getBrGrupe()+"");
+//            lblTest.setText(karton.getGrupaZadataka().getTest().getNazivTesta());
+//            ArrayList<Zadatak> zadaciKartona = karton.getListaOdg();
+//            ModelTabelePretragaKartona mtr = new ModelTabelePretragaKartona();
+//            mtr.setZadaci(zadaciKartona);
+//            tabelaZadataka.setModel(mtr);
+//        }else{
+//            JOptionPane.showMessageDialog(this, "Karton sa takvim kratonskim brojem ne postoji u bazi!");
+//            return;
+//        }
     }//GEN-LAST:event_btnNadjiKartonActionPerformed
 
     /**

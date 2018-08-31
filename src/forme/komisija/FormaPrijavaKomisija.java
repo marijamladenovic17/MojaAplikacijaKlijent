@@ -9,7 +9,7 @@ import forme.FormaPrijaviSe;
 import javax.swing.JOptionPane;
 import komunikacija.KomunikacijaSaServerom;
 import konstante.Operacije;
-import logika.Kontroler;
+
 import transfer.KlijentskiZahtev;
 import transfer.ServerskiOdgovor;
 

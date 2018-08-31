@@ -5,7 +5,7 @@
  */
 package forme.komisija;
 
-import db.Konstanta;
+
 import domen.GrupaZadatka;
 import domen.Kandidat;
 import domen.Karton;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import komunikacija.KomunikacijaSaServerom;
 import konstante.Operacije;
-import logika.Kontroler;
+
 import modeli.ModelTabeleResenjaZadataka;
 import transfer.KlijentskiZahtev;
 import transfer.ServerskiOdgovor;
@@ -41,15 +41,11 @@ public class FormaUnosKartona extends javax.swing.JFrame {
         popuniGrupuZadataka();
         lblTest.setVisible(false);
         srediTabelu();
-        lblTekst.setVisible(false);
-        lblUkupanBrPoena.setVisible(false);
-        txtPrezimeKandidata.setVisible(false);
+       
         txtBrojUnosaKartona.setText("1");
         
         txtBrojUnosaKartona.setEnabled(false);
-        txtImeKandidata.setVisible(false);
-        lblIme.setVisible(false);
-        lblPrezime.setVisible(false);
+        
 //        vratiBrUnosaKartona();
     }
 
@@ -69,17 +65,7 @@ public class FormaUnosKartona extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelOdgovora = new javax.swing.JTable();
-        btnUkupanBrojPoena = new javax.swing.JButton();
-        lblTekst = new javax.swing.JLabel();
-        lblUkupanBrPoena = new javax.swing.JLabel();
-        lblIme = new javax.swing.JLabel();
-        txtImeKandidata = new javax.swing.JTextField();
-        lblPrezime = new javax.swing.JLabel();
-        txtPrezimeKandidata = new javax.swing.JTextField();
         btnSacuvajKarton = new javax.swing.JButton();
-        btnProveriPodatke = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        txtSifraPrijave = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -125,18 +111,6 @@ public class FormaUnosKartona extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabelOdgovora);
 
-        btnUkupanBrojPoena.setText("Izracunaj ukupan broj osvojenih poena");
-        btnUkupanBrojPoena.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUkupanBrojPoenaActionPerformed(evt);
-            }
-        });
-
-        lblTekst.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblTekst.setText("UKUPAN BROJ OSTVARENIH POENA");
-
-        lblUkupanBrPoena.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -144,31 +118,15 @@ public class FormaUnosKartona extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(109, 109, 109)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnUkupanBrojPoena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblTekst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblUkupanBrPoena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(324, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnUkupanBrojPoena)
-                        .addGap(49, 49, 49)
-                        .addComponent(lblTekst)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblUkupanBrPoena, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(157, 157, 157))
         );
-
-        lblIme.setText("Ime kandidata:");
-
-        lblPrezime.setText("Prezime kandidata:");
 
         btnSacuvajKarton.setText("SACUVAJ KARTON");
         btnSacuvajKarton.addActionListener(new java.awt.event.ActionListener() {
@@ -176,15 +134,6 @@ public class FormaUnosKartona extends javax.swing.JFrame {
                 btnSacuvajKartonActionPerformed(evt);
             }
         });
-
-        btnProveriPodatke.setText("PROVERI PODATKE KARTONA");
-        btnProveriPodatke.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProveriPodatkeActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setText("Sifra prijave:");
 
         jButton1.setText("Glavna forma");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -201,67 +150,38 @@ public class FormaUnosKartona extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblIme)
-                                .addGap(34, 34, 34)
-                                .addComponent(txtImeKandidata, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(42, 42, 42)
-                                .addComponent(lblPrezime)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtPrezimeKandidata, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(225, 225, 225))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(58, 58, 58)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnSacuvajKarton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnProveriPodatke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(745, 745, 745)
+                        .addComponent(jButton1)
+                        .addGap(58, 58, 58)
+                        .addComponent(btnSacuvajKarton, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(cmbGZ, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(110, 110, 110)
                         .addComponent(lblTest, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtSifraPrijave, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(252, 252, 252))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(162, 162, 162)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblTest, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cmbGZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtSifraPrijave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblTest, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cmbGZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6)))
                 .addGap(35, 35, 35)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblIme)
-                    .addComponent(txtImeKandidata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPrezime)
-                    .addComponent(txtPrezimeKandidata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnProveriPodatke))
-                .addGap(18, 18, 18)
+                .addGap(67, 67, 67)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSacuvajKarton)
                     .addComponent(jButton1))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 153));
@@ -358,46 +278,6 @@ public class FormaUnosKartona extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cmbGZActionPerformed
 
-    private void btnUkupanBrojPoenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUkupanBrojPoenaActionPerformed
-        double ukupanBrojBodova = 0;
-        GrupaZadatka gz = (GrupaZadatka) cmbGZ.getSelectedItem();
-        ArrayList<Resenje> listaResenja = (ArrayList<Resenje>) gz.getListaResenihZadataka();
-        ModelTabeleResenjaZadataka mrz = (ModelTabeleResenjaZadataka) tabelOdgovora.getModel();
-        ArrayList<Resenje> listaOdgovora = mrz.vraiResenja();
-        for (Resenje resenje : listaResenja) {
-            for (Resenje resenje1 : listaOdgovora) {
-                if (resenje.getRbZadatka() == resenje1.getRbZadatka()) {
-                    String s1 = resenje.getOdgovor() + "";
-                    s1 = s1.toUpperCase();
-                    System.out.println("+"+s1+"+");
-                    String s2 = resenje1.getOdgovor() + "";
-                    s2 = s2.toUpperCase();
-                    System.out.println("+"+s1+"+");
-                    if (s2.equals(" ")) {
-                        ukupanBrojBodova = ukupanBrojBodova - 1;
-                        break;
-                    }
-                    if (!s2.equals("N")) {
-                        if (s1.toUpperCase().equals(s2.toUpperCase())) {
-                            ukupanBrojBodova += 3;
-                        } else {
-                            ukupanBrojBodova = ukupanBrojBodova - 0.3;
-                        }
-                    }
-                }
-            }
-        }
-        lblTekst.setVisible(true);
-        lblUkupanBrPoena.setText(ukupanBrojBodova + "");
-        lblUkupanBrPoena.setVisible(true);
-        btnUkupanBrojPoena.setVisible(false);
-        txtPrezimeKandidata.setVisible(true);
-        txtImeKandidata.setVisible(true);
-        lblIme.setVisible(true);
-        lblPrezime.setVisible(true);
-
-    }//GEN-LAST:event_btnUkupanBrojPoenaActionPerformed
-
     private void btnSacuvajKartonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacuvajKartonActionPerformed
         String kid = txtKartonID.getText();
         String brUnosa = txtBrojUnosaKartona.getText();
@@ -408,42 +288,15 @@ public class FormaUnosKartona extends javax.swing.JFrame {
         }
 
         GrupaZadatka gz = (GrupaZadatka) cmbGZ.getSelectedItem();
-        String rezultat = lblUkupanBrPoena.getText();
-        String brojPrijave = txtSifraPrijave.getText();
-        if(rezultat.isEmpty() || brojPrijave.isEmpty() || gz==null){
-            JOptionPane.showMessageDialog(this, "Niste uneli sva polja!");
-            return;
-        }
+       
+       
         int kartonID = Integer.parseInt(kid);
         int brojUnosa = Integer.parseInt(brUnosa);
         int brojKartona = Integer.parseInt(brojKar);
-        double rez = Double.parseDouble(rezultat);
-        Kandidat kandidat = Kontroler.getInstance().proveriKarton(brojPrijave);
-        Karton karton = new Karton(kartonID, brojKartona, brojPrijave,rez, brojUnosa, gz, kandidat);
-        boolean sacuvano = Kontroler.getInstance().unesiKarton(karton);
-        if(sacuvano){
-            JOptionPane.showMessageDialog(this, "Uspesno sacuvan karton!");
-        }else {
-        JOptionPane.showMessageDialog(this, "Neuspesno sacuvan karton!");
-        }
+        
+       
         //int
     }//GEN-LAST:event_btnSacuvajKartonActionPerformed
-
-    private void btnProveriPodatkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveriPodatkeActionPerformed
-        String ime = txtImeKandidata.getText();
-        String prezime = txtPrezimeKandidata.getText();
-        String brojPrijave = txtSifraPrijave.getText();
-        Kandidat kandidat = Kontroler.getInstance().proveriKarton(brojPrijave);
-        if (kandidat == null) {
-            JOptionPane.showMessageDialog(this, "Kandidat sa ovom sifrom prijave ne postoji u bazi!");
-            return;
-        }
-        if (kandidat.getIme().toUpperCase().equals(ime.toUpperCase()) && kandidat.getPrezime().toUpperCase().equals(prezime.toUpperCase())) {
-            JOptionPane.showMessageDialog(this, "Podaci su ispravni! Mozete sacuvati ovaj karton!");
-        } else {
-            JOptionPane.showMessageDialog(this, "Doslo je do greske! Ime i prezime kandidata se ne poklapaju sa sifrom prijave!");
-        }
-    }//GEN-LAST:event_btnProveriPodatkeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         FormaZaKomisiju fzk = new FormaZaKomisiju();
@@ -487,9 +340,7 @@ public class FormaUnosKartona extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnProveriPodatke;
     private javax.swing.JButton btnSacuvajKarton;
-    private javax.swing.JButton btnUkupanBrojPoena;
     private javax.swing.JComboBox cmbGZ;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -499,29 +350,18 @@ public class FormaUnosKartona extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblIme;
-    private javax.swing.JLabel lblPrezime;
-    private javax.swing.JLabel lblTekst;
     private javax.swing.JLabel lblTest;
-    private javax.swing.JLabel lblUkupanBrPoena;
     private javax.swing.JTable tabelOdgovora;
     private javax.swing.JTextField txtBrojKartona;
     private javax.swing.JTextField txtBrojUnosaKartona;
-    private javax.swing.JTextField txtImeKandidata;
     private javax.swing.JTextField txtKartonID;
-    private javax.swing.JTextField txtPrezimeKandidata;
-    private javax.swing.JTextField txtSifraPrijave;
     // End of variables declaration//GEN-END:variables
 
-    private void vratiKartonId() {
-        int kartonID = Kontroler.getInstance().vratiKartonID();
-        txtKartonID.setText(kartonID + "");
-    }
+    
 
 //    private void vratiBrUnosaKartona() {
 //        String brKarton = txtBrojKartona.getText();

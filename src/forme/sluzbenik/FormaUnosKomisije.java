@@ -6,7 +6,7 @@
 package forme.sluzbenik;
 
 import forme.sluzbenik.FormaZaSluzbenika;
-import db.Konstanta;
+
 import domen.Clan;
 import domen.Komisija;
 import java.awt.Toolkit;
@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 import jdk.nashorn.internal.ir.BreakNode;
 import komunikacija.KomunikacijaSaServerom;
 import konstante.Operacije;
-import logika.Kontroler;
+
 import modeli.ModelTabeleKomisija;
 import transfer.KlijentskiZahtev;
 import transfer.ServerskiOdgovor;

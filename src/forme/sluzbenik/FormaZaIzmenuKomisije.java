@@ -6,13 +6,13 @@
 package forme.sluzbenik;
 
 import forme.sluzbenik.FormaZaSluzbenika;
-import db.Konstanta;
+
 import domen.Komisija;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import komunikacija.KomunikacijaSaServerom;
 import konstante.Operacije;
-import logika.Kontroler;
+
 import transfer.KlijentskiZahtev;
 import transfer.ServerskiOdgovor;
 

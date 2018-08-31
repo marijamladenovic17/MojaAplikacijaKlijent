@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import komunikacija.KomunikacijaSaServerom;
 import konstante.Operacije;
-import logika.Kontroler;
+
 import modeli.ModelTabeleKomisija;
 import transfer.KlijentskiZahtev;
 import transfer.ServerskiOdgovor;
