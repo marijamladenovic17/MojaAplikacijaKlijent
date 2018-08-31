@@ -62,9 +62,10 @@ public class FormaPrijaviSe extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(102, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("PRIJAVI SE KAO");
 
-        btnKomisija.setBackground(new java.awt.Color(153, 204, 255));
+        btnKomisija.setBackground(new java.awt.Color(102, 102, 102));
         btnKomisija.setText("KOMISIJA");
         btnKomisija.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +73,7 @@ public class FormaPrijaviSe extends javax.swing.JFrame {
             }
         });
 
-        btnSluzbenik.setBackground(new java.awt.Color(153, 204, 255));
+        btnSluzbenik.setBackground(new java.awt.Color(102, 102, 102));
         btnSluzbenik.setText("SLUŽBENIK");
         btnSluzbenik.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

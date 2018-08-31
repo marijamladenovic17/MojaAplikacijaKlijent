@@ -11,6 +11,7 @@ import domen.Kandidat;
 import domen.Karton;
 import domen.Resenje;
 import domen.Test;
+import domen.Zadatak;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -18,6 +19,7 @@ import komunikacija.KomunikacijaSaServerom;
 import konstante.Operacije;
 
 import modeli.ModelTabeleResenjaZadataka;
+import modeli.ModelTabeleZadataka;
 import transfer.KlijentskiZahtev;
 import transfer.ServerskiOdgovor;
 
@@ -135,7 +137,7 @@ public class FormaUnosKartona extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Glavna forma");
+        jButton1.setText("Izadji");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -164,7 +166,7 @@ public class FormaUnosKartona extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(162, 162, 162)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,17 +285,27 @@ public class FormaUnosKartona extends javax.swing.JFrame {
         String brUnosa = txtBrojUnosaKartona.getText();
         String brojKar = txtBrojKartona.getText();
         if (kid.isEmpty() || brUnosa.isEmpty() || brojKar.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Popunite sve podatke o kartonu!");
+            JOptionPane.showMessageDialog(this, "Popunite broj kartona!");
             return;
         }
 
         GrupaZadatka gz = (GrupaZadatka) cmbGZ.getSelectedItem();
-       
+       ModelTabeleZadataka mtz = (ModelTabeleZadataka) tabelOdgovora.getModel();
+       ArrayList<Zadatak> lz =mtz.vraiResenja();
        
         int kartonID = Integer.parseInt(kid);
         int brojUnosa = Integer.parseInt(brUnosa);
         int brojKartona = Integer.parseInt(brojKar);
-        
+        Karton k = new Karton(kartonID, brojKartona, brojKar, brojUnosa, gz);
+        k.setListaOdg(lz);
+        KlijentskiZahtev kz = new KlijentskiZahtev(Operacije.SACUVAJ_KARTON, k);
+        KomunikacijaSaServerom.getInstance().posaljiKZ(kz);
+        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().prihvatiSO();
+        if(so.getOdgovor().equals("!")){
+            JOptionPane.showMessageDialog(this, so.getPoruka());
+        }else {
+            JOptionPane.showMessageDialog(this, so.getPoruka());
+        }
        
         //int
     }//GEN-LAST:event_btnSacuvajKartonActionPerformed
@@ -395,17 +407,17 @@ public class FormaUnosKartona extends javax.swing.JFrame {
     }
 
     private void srediTabelu() {
-        ModelTabeleResenjaZadataka mrs = new ModelTabeleResenjaZadataka();
-        tabelOdgovora.setModel(mrs);
+        ModelTabeleZadataka mtz = new ModelTabeleZadataka(this);
+        tabelOdgovora.setModel(mtz);
         GrupaZadatka gz = (GrupaZadatka) cmbGZ.getSelectedItem();
         Test t = gz.getTest();
         if (t.getTestID() == 1) {
             for (int i = 0; i < 20; i++) {
-                mrs.dodajResenje(i + 1, ' ');
+                mtz.dodajResenje(i + 1, ' ');
             }
         } else {
             for (int i = 0; i < 30; i++) {
-                mrs.dodajResenje(i + 1, ' ');
+                mtz.dodajResenje(i + 1, ' ');
             }
         }
 
@@ -423,5 +435,15 @@ public class FormaUnosKartona extends javax.swing.JFrame {
 
     void postaviUnosK() {
         txtBrojUnosaKartona.setText("2");
+    }
+
+    public void obavesti() {
+      JOptionPane.showMessageDialog(this, "Mozete uneti A, B, C, D, E ili N");
+      return;
+    }
+
+    public void obavestiLength() {
+        JOptionPane.showMessageDialog(this, "Mozete uneti samo jednu vrednost!");
+      return;
     }
 }

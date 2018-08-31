@@ -60,7 +60,7 @@ public class ModelTabelePretragaKartona extends AbstractTableModel{
             case 0:
                 return "Redni broj zadatka";
             case 1:
-                return "Tacan odgovor";
+                return "Odgovor";
             default:
                 return "";
         }

@@ -6,30 +6,33 @@
 package modeli;
 
 import domen.Resenje;
-import forme.sluzbenik.UnosGrupeZadataka;
+import domen.Zadatak;
+import forme.komisija.FormaUnosKartona;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 /**
  *
  * @author PC
  */
-public class ModelTabeleResenjaZadataka extends AbstractTableModel {
-
-    ArrayList<Resenje> listaResenja;
-    //UnosGrupeZadataka ufz = new UnosGrupeZadataka();
-
-    public ModelTabeleResenjaZadataka() {
-        listaResenja = new ArrayList<>();
+public class ModelTabeleZadataka extends AbstractTableModel{
+    ArrayList<Zadatak> lz;
+    FormaUnosKartona fuk;
+    public ModelTabeleZadataka() {
+        lz = new ArrayList<>();
     }
 
-//    public void setUfz(UnosGrupeZadataka ufz) {
-//        this.ufz = ufz;
-//    }
+    public ModelTabeleZadataka( FormaUnosKartona fuk) {
+        lz = new ArrayList<>();
+        this.fuk = fuk;
+    }
+
+    
+    
+    
     @Override
     public int getRowCount() {
-        return listaResenja.size();
+        return lz.size();
     }
 
     @Override
@@ -39,7 +42,7 @@ public class ModelTabeleResenjaZadataka extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Resenje r = listaResenja.get(rowIndex);
+        Zadatak r = lz.get(rowIndex);
 
         switch (columnIndex) {
             case 0:
@@ -50,7 +53,6 @@ public class ModelTabeleResenjaZadataka extends AbstractTableModel {
                 return "";
         }
     }
-
     @Override
     public String getColumnName(int column) {
         switch (column) {
@@ -64,7 +66,7 @@ public class ModelTabeleResenjaZadataka extends AbstractTableModel {
     }
 
     public void dodajResenje(int redBr, char odg) {
-        listaResenja.add(new Resenje(redBr, odg));
+        lz.add(new Zadatak(redBr, odg));
         fireTableDataChanged();
     }
 
@@ -78,7 +80,7 @@ public class ModelTabeleResenjaZadataka extends AbstractTableModel {
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        Resenje r = listaResenja.get(rowIndex);
+        Zadatak r = lz.get(rowIndex);
         switch (columnIndex) {
             case 0:
                 String br = (String) aValue;
@@ -87,16 +89,26 @@ public class ModelTabeleResenjaZadataka extends AbstractTableModel {
                 break;
             case 1:
                 String odg = (String) aValue;
-                odg.toUpperCase();
-                r.setOdgovor(odg.charAt(1));
+                String o =odg.toUpperCase().trim();
+                if(o.length()>1){
+                     fuk.obavestiLength();
+                }
+                if(o.charAt(0)=='A' || o.charAt(0)=='B'  || o.charAt(0)=='C'  || o.charAt(0)=='D' || o.charAt(0)=='E' || o.charAt(0)=='N' ){
+                    r.setOdgovor(o.charAt(0));
+                    
+                  } else {
+                    fuk.obavesti();
+                    return;
+                }
+                
                 //System.out.println("Unesen je!");
                 break;
         }
 
     }
 
-    public ArrayList<Resenje> vraiResenja() {
-        return listaResenja;
+    public ArrayList<Zadatak> vraiResenja() {
+        return lz;
     }
-
+    
 }
