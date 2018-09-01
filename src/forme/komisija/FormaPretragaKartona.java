@@ -5,13 +5,18 @@
  */
 package forme.komisija;
 
+import domen.Kandidat;
 import domen.Karton;
 import domen.Zadatak;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import komunikacija.KomunikacijaSaServerom;
+import konstante.Operacije;
 
 import modeli.ModelTabelePretragaKartona;
+import transfer.KlijentskiZahtev;
+import transfer.ServerskiOdgovor;
 
 /**
  *
@@ -75,10 +80,6 @@ public class FormaPretragaKartona extends javax.swing.JFrame {
                 btnNazadActionPerformed(evt);
             }
         });
-
-        lblIme.setText("jLabel2");
-
-        lblPrezime.setText("jLabel2");
 
         jLabel2.setText("Sifra prijave:");
 
@@ -145,7 +146,7 @@ public class FormaPretragaKartona extends javax.swing.JFrame {
                     .addComponent(lblTest))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelGlavniLayout = new javax.swing.GroupLayout(panelGlavni);
@@ -209,23 +210,42 @@ public class FormaPretragaKartona extends javax.swing.JFrame {
 
     private void btnNadjiKartonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNadjiKartonActionPerformed
         // TODO add your handling code here:
-//        String kb =txtKartonskiBroj.getText();
-//        int kartonskiBroj = Integer.parseInt(kb);
-//        
-//        Karton karton = Kontroler.getInstance().vratiKarton(kartonskiBroj);
-//        
-//        if(karton!=null){
-//            panelZaNestajanje.setVisible(true);
-//            lblGrupaZadataka.setText(karton.getGrupaZadataka().getBrGrupe()+"");
-//            lblTest.setText(karton.getGrupaZadataka().getTest().getNazivTesta());
-//            ArrayList<Zadatak> zadaciKartona = karton.getListaOdg();
-//            ModelTabelePretragaKartona mtr = new ModelTabelePretragaKartona();
-//            mtr.setZadaci(zadaciKartona);
-//            tabelaZadataka.setModel(mtr);
-//        }else{
-//            JOptionPane.showMessageDialog(this, "Karton sa takvim kratonskim brojem ne postoji u bazi!");
-//            return;
-//        }
+        String kb =txtKartonskiBroj.getText();
+        int kartonskiBroj = Integer.parseInt(kb);
+//       
+        KlijentskiZahtev kz = new KlijentskiZahtev();
+        kz.setParametar(kartonskiBroj);
+        kz.setOperacija(Operacije.VRATI_KARTON);
+        
+        KomunikacijaSaServerom.getInstance().posaljiKZ(kz);
+        
+        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().prihvatiSO();
+        Karton karton = (Karton) so.getOdgovor();
+        if(karton!=null){
+            Kandidat kand = karton.getKandidat();
+            if(kand==null){
+                lblSifraPrijave.setText("Karton jos uvek nije spojen sa kandidatom!");
+            }else{
+                lblIme.setText(kand.getIme());
+                lblPrezime.setText(kand.getPrezime());
+                lblSifraPrijave.setText(kand.getSifraPrijave());
+            }
+            panelZaNestajanje.setVisible(true);
+            lblGrupaZadataka.setText(karton.getGrupaZadataka().getBrGrupe()+"");
+            lblTest.setText(karton.getGrupaZadataka().getTest().getNazivTesta());
+            
+            ArrayList<Zadatak> zadaciKartona = karton.getListaOdg();
+            ModelTabelePretragaKartona mtr = new ModelTabelePretragaKartona();
+            mtr.setZadaci(zadaciKartona);
+            tabelaZadataka.setModel(mtr);
+        }else{
+            JOptionPane.showMessageDialog(this, "Karton sa takvim kratonskim brojem ne postoji u bazi!");
+            return;
+       }
+
+
+
+
     }//GEN-LAST:event_btnNadjiKartonActionPerformed
 
     /**
