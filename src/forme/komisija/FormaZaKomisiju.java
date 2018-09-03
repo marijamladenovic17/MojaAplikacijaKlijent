@@ -38,9 +38,9 @@ public class FormaZaKomisiju extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         cbmUnosKartona = new javax.swing.JCheckBoxMenuItem();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        cbVerifikacija = new javax.swing.JCheckBoxMenuItem();
         jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
         jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
-        jCheckBoxMenuItem4 = new javax.swing.JCheckBoxMenuItem();
         jCheckBoxMenuItem5 = new javax.swing.JCheckBoxMenuItem();
         jCheckBoxMenuItem6 = new javax.swing.JCheckBoxMenuItem();
         jCheckBoxMenuItem7 = new javax.swing.JCheckBoxMenuItem();
@@ -80,6 +80,15 @@ public class FormaZaKomisiju extends javax.swing.JFrame {
         });
         jMenu1.add(jCheckBoxMenuItem1);
 
+        cbVerifikacija.setSelected(true);
+        cbVerifikacija.setText("Verifikacija kartona");
+        cbVerifikacija.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbVerifikacijaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(cbVerifikacija);
+
         jCheckBoxMenuItem2.setSelected(true);
         jCheckBoxMenuItem2.setText("Spajanje kartona");
         jCheckBoxMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -97,15 +106,6 @@ public class FormaZaKomisiju extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jCheckBoxMenuItem3);
-
-        jCheckBoxMenuItem4.setSelected(true);
-        jCheckBoxMenuItem4.setText("Verifikacija kartona");
-        jCheckBoxMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jCheckBoxMenuItem4);
 
         jCheckBoxMenuItem5.setSelected(true);
         jCheckBoxMenuItem5.setText("Izmena kartona");
@@ -143,9 +143,11 @@ public class FormaZaKomisiju extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxMenuItem2ActionPerformed
 
-    private void jCheckBoxMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxMenuItem4ActionPerformed
+    private void cbVerifikacijaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVerifikacijaActionPerformed
+        FormaZaVerifikacijuKartona fzv = new FormaZaVerifikacijuKartona();
+        fzv.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_cbVerifikacijaActionPerformed
 
     private void jCheckBoxMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem3ActionPerformed
         // TODO add your handling code here:
@@ -200,11 +202,11 @@ public class FormaZaKomisiju extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBoxMenuItem cbVerifikacija;
     private javax.swing.JCheckBoxMenuItem cbmUnosKartona;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem4;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem5;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem6;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem7;

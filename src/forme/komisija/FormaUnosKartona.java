@@ -296,7 +296,7 @@ public class FormaUnosKartona extends javax.swing.JFrame {
         int kartonID = Integer.parseInt(kid);
         int brojUnosa = Integer.parseInt(brUnosa);
         int brojKartona = Integer.parseInt(brojKar);
-        Karton k = new Karton(kartonID, brojKartona, brojKar, brojUnosa, gz);
+        Karton k = new Karton(kartonID, brojKartona, brojUnosa, gz);
         k.setListaOdg(lz);
         KlijentskiZahtev kz = new KlijentskiZahtev(Operacije.SACUVAJ_KARTON, k);
         KomunikacijaSaServerom.getInstance().posaljiKZ(kz);
